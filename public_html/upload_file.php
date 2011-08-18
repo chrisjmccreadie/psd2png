@@ -11,8 +11,8 @@ else
   echo "Stored in: " . $_FILES["file"]["tmp_name"];
   
   print_r($_FILES['file']);
-     move_uploaded_file($_FILES["file"]["tmp_name"],'/home/psd2png/public_html/output.psd');
-   
+     $res = move_uploaded_file($_FILES["file"]["tmp_name"],'/home/psd2png/public_html/output.psd');
+   echo $res;
   
   /*
   $im = new Imagick('$_FILES["file"]["tmp_name"]');
