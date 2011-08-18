@@ -74,10 +74,10 @@ class UploadHandler
     }
     
     private function get_file_objects() {
-        return array_values(array_filter(array_map(
-            array($this, 'get_file_object'),
-            scandir($this->options['upload_dir'])
-        )));
+        //return array_values(array_filter(array_map(
+         //   array($this, 'get_file_object'),
+         //   scandir($this->options['upload_dir'])
+        //)));
     }
 
     private function create_scaled_image($file_name, $options) {
@@ -328,8 +328,8 @@ class UploadHandler
 
 	}
 	///echo json_encode($info);
-	$infoa = json_encode($info);
-	mail("chris@cjmcsoftware.co.uk","test","dd".$infoa,"From:test@totemworkflow.co.uk");
+	//$infoa = json_encode($info);
+	//mail("chris@cjmcsoftware.co.uk","test","dd".$infoa,"From:test@totemworkflow.co.uk");
 
     }
     
