@@ -291,6 +291,8 @@ class UploadHandler
     }
 }
 
+echo "ddd".$_SERVER['PHP_SELF']; 
+exit; 
 $upload_handler = new UploadHandler();
 
 header('Pragma: no-cache');
@@ -313,5 +315,5 @@ switch ($_SERVER['REQUEST_METHOD']) {
         header('HTTP/1.0 405 Method Not Allowed');
 }
 
-echo $_SERVER['PHP_SELF']; 
+
 ?>
