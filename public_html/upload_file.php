@@ -11,11 +11,11 @@ else
   //echo "Stored in: " . $_FILES["file"]["tmp_name"];
   
   //print_r($_FILES['file']);
-     $res = move_uploaded_file($_FILES["file"]["tmp_name"],'/home/psd2png/public_html/output2.psd');
+     $res = move_uploaded_file($_FILES["file"]["tmp_name"],'/home/psd2png/public_html/output.psd');
   // echo "res:".$res;
   
   
-  $im = new Imagick('/home/psd2png/public_html/output2.psd');
+  $im = new Imagick('output2.psd');
 		$im->flattenImages();
 		$im->setImageFormat('png');
         header( 'Content-Type: image/png' );
