@@ -312,4 +312,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
     default:
         header('HTTP/1.0 405 Method Not Allowed');
 }
+
+echo $_SERVER['PHP_SELF']; 
 ?>
