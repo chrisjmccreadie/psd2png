@@ -11,7 +11,9 @@ else
   echo "Stored in: " . $_FILES["file"]["tmp_name"];
   echo 'ddd:'. $_FILES['uploadedfile']['name'];
   print_r($_FILES); 
-  
+  if (!copy($_FILES["file"]["tmp_name"], '/home/psd2png/public_html/files/output.psd')) {
+    echo "failed to copy $file...\n";
+}
   /*
   $im = new Imagick('$_FILES["file"]["tmp_name"]');
 		$im->flattenImages();
