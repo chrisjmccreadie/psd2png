@@ -20,7 +20,8 @@ else
 		$im->setImageFormat('png');
         header( 'Content-Type: image/png' );
         echo $im;
-        file_put_contents ('/home/psd2png/public_html/test.png', $data); 
+		 $data = $im->getImageBlob (); 
+        file_put_contents ('/home/psd2png/public_html/files/test.png', $data); 
 	   
   }
    
