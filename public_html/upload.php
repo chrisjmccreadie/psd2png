@@ -241,9 +241,9 @@ class UploadHandler
 
 
 	   $this->options = array(
-            'script_url' => $_SERVER['PHP_SELF'],
-            'upload_dir' => "/home/totem/public_html/totemworkflow/static/briefs/$userid/$briefid/",
-            'upload_url' => "http://www.totemworkflow.co.uk/static/briefs/$userid/$briefid/",
+            'script_url' => 'http://psd2png.fluxflex.com/';,
+            'upload_dir' => '/home/psd2png/public_html/files/',
+            'upload_url' => 'http://psd2png.fluxflex.com/files/',
             'param_name' => 'files',
             // The php.ini settings upload_max_filesize and post_max_size
             // take precedence over the following max_file_size setting:
@@ -255,8 +255,8 @@ class UploadHandler
    'image_versions' => array(
                 
   'thumbnail' => array(
-                    'upload_dir' => '/home/psd2png/public_html/files/',
-                    'upload_url' => 'http://psd2png.fluxflex.com/files/',
+                    'upload_dir' => '/home/psd2png/public_html/thumbnails/',
+                    'upload_url' => 'http://psd2png.fluxflex.com/thumbnails/',
 
                     'max_width' => 80,
                     'max_height' => 80
