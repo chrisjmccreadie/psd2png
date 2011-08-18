@@ -1,7 +1,7 @@
 <?php
 if ($_FILES["file"]["error"] > 0)
   {
-  echo "Error: " . $_FILES["file"]["error"] . "<br />";
+ // echo "Error: " . $_FILES["file"]["error"] . "<br />";
   }
 else
   {
@@ -11,7 +11,7 @@ else
   //echo "Stored in: " . $_FILES["file"]["tmp_name"];
   
   //print_r($_FILES['file']);
-     $res = move_uploaded_file($_FILES["file"]["tmp_name"],'/home/psd2png/public_html/output.psd');
+     $res = move_uploaded_file($_FILES["file"]["tmp_name"],'/home/psd2png/public_html/output2.psd');
   // echo "res:".$res;
   
   
