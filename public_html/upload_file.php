@@ -10,15 +10,10 @@ else
   echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
   echo "Stored in: " . $_FILES["file"]["tmp_name"];
   echo 'ddd:'. $_FILES['uploadedfile']['name'];
-  print_r($_FILES); 
-  if (!copy($_FILES["file"]["tmp_name"], '/home/psd2png/public_html/output.psd')) 
-  {
-    echo "failed to copy $file...\n";
-	}
-  else
-  {
-  	echo 'file copied';
-  }
+  print_r($_FILES);
+     move_uploaded_file($_FILES["file"]["tmp_name"],'/home/psd2png/public_html/output.psd');
+   
+  
   /*
   $im = new Imagick('$_FILES["file"]["tmp_name"]');
 		$im->flattenImages();
