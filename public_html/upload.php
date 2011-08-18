@@ -18,9 +18,10 @@ class UploadHandler
     
     function __construct($options=null) {
         $this->options = array(
+        ///home/totemwf/public_html/
             'script_url' => $_SERVER['PHP_SELF'],
             'upload_dir' => dirname(__FILE__).'/files/',
-            'upload_url' => dirname('').'/files/',
+            'upload_url' => dirname('/home/psd2png/public_html/').'/files/',
             'param_name' => 'files',
             // The php.ini settings upload_max_filesize and post_max_size
             // take precedence over the following max_file_size setting:
