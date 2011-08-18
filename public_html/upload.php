@@ -1,6 +1,6 @@
 <?php
 /*
- * jQuery File Upload Plugin PHP Example 5.2.4
+ * jQuery File Upload Plugin PHP Example 5.2.2
  * https://github.com/blueimp/jQuery-File-Upload
  *
  * Copyright 2010, Sebastian Tschan
@@ -17,16 +17,19 @@ class UploadHandler
     private $options;
     
     function __construct($options=null) {
-        $this->options = array(
-        ///home/totemwf/public_html/
+
+	/*
+	//echo __FILE__;
+        //echo $_SERVER['PHP_SELF'];
+	$this->options = array(
             'script_url' => $_SERVER['PHP_SELF'],
-            'upload_dir' => dirname(__FILE__).'/files/',
-            'upload_url' => dirname('http://psd2png.fluxflex.com/').'/files/',
+            'upload_dir' => dirname(__FILE__)."/briefs/$userid/$briefid/",
+            'upload_url' => dirname($_SERVER['PHP_SELF'])."/briefs/$userid/$briefid/",
             'param_name' => 'files',
-            // The php.ini settings upload_max_filesize and post_max_size
+            // The php.ini settings upload_max_filesize and Wpost_max_size
             // take precedence over the following max_file_size setting:
             'max_file_size' => null,
-            'min_file_size' => 10,
+            'min_file_size' => 1,
             'accept_file_types' => '/.+$/i',
             'max_number_of_files' => null,
             'discard_aborted_uploads' => true,
@@ -34,22 +37,16 @@ class UploadHandler
                 // Uncomment the following version to restrict the size of
                 // uploaded images. You can also add additional versions with
                 // their own upload directories:
-                /*
-                'large' => array(
-                    'upload_dir' => dirname(__FILE__).'/files/',
-                    'upload_url' => dirname($_SERVER['PHP_SELF']).'/files/',
-                    'max_width' => 1920,
-                    'max_height' => 1200
-                ),
-                */
                 'thumbnail' => array(
-                    'upload_dir' => dirname(__FILE__).'/thumbnails/',
-                    'upload_url' => dirname($_SERVER['PHP_SELF']).'/thumbnails/',
+                    'upload_dir' => dirname(__FILE__).'/files/thumbnails/',
+                    'upload_url' => dirname($_SERVER['PHP_SELF']).'/files/thumbnails/',
+
                     'max_width' => 80,
                     'max_height' => 80
                 )
             )
         );
+	*/
         if ($options) {
             $this->options = array_replace_recursive($this->options, $options);
         }
@@ -164,14 +161,14 @@ class UploadHandler
     
     private function handle_file_upload($uploaded_file, $name, $size, $type, $error) {
         $file = new stdClass();
-        // Remove path information and dots around the filename, to prevent uploading
-        // into different directories or replacing hidden system files.
-        // Also remove control characters and spaces (\x00..\x20) around the filename:
-        $file->name = trim(basename(stripslashes($name)), ".\x00..\x20");
+        $file->name = basename(stripslashes($name));
         $file->size = intval($size);
         $file->type = $type;
         $error = $this->has_error($uploaded_file, $file, $error);
         if (!$error && $file->name) {
+            if ($file->name[0] === '.') {
+                $file->name = substr($file->name, 1);
+            }
             $file_path = $this->options['upload_dir'].$file->name;
             $append_file = is_file($file_path) && $file->size > filesize($file_path);
             clearstatcache();
@@ -229,7 +226,45 @@ class UploadHandler
         echo json_encode($info);
     }
     
-    public function post() {
+    public function post($userid,$briefid) {
+
+
+
+	 if (!is_dir("../../../briefs/$userid"))
+              mkdir("../../../briefs/$userid", 0777);
+
+         if (!is_dir("../../../briefs/$userid/$briefid"))
+              mkdir("../../../briefs/$userid/$briefid", 0777);
+
+	 if (!is_dir("../../../briefs/$userid/$briefid/thumbnails"))
+              mkdir("../../../briefs/$userid/$briefid/thumbnails", 0777);
+
+
+	   $this->options = array(
+            'script_url' => $_SERVER['PHP_SELF'],
+            'upload_dir' => "/home/totem/public_html/totemworkflow/static/briefs/$userid/$briefid/",
+            'upload_url' => "http://www.totemworkflow.co.uk/static/briefs/$userid/$briefid/",
+            'param_name' => 'files',
+            // The php.ini settings upload_max_filesize and post_max_size
+            // take precedence over the following max_file_size setting:
+            'max_file_size' => null,
+            'min_file_size' => 1,
+            'accept_file_types' => '/.+$/i',
+            'max_number_of_files' => null,
+            'discard_aborted_uploads' => true,
+   'image_versions' => array(
+                
+  'thumbnail' => array(
+                    'upload_dir' => '/home/psd2png/public_html/files/',
+                    'upload_url' => 'http://psd2png.fluxflex.com/files/',
+
+                    'max_width' => 80,
+                    'max_height' => 80
+                )
+            )
+        );
+
+
         $upload = isset($_FILES[$this->options['param_name']]) ?
             $_FILES[$this->options['param_name']] : array(
                 'tmp_name' => null,
@@ -271,7 +306,31 @@ class UploadHandler
         } else {
             header('Content-type: text/plain');
         }
-        echo json_encode($info);
+       
+	//$ar = json_encode($info);
+	//print_r($info);
+        //echo json_encode($info);
+	foreach ($info as $value) {
+	//	echo $value->name;
+		//$uid = $_POST['userid'];
+//	     mail("chris@cjmcsoftware.co.uk","test","dd".$value->name."userid = $briefid","From:test@totemworkflow.co.uk");
+
+		// Make a MySQL Connection
+//		mysql_connect("localhost", "totem", "simonchris2011") ;
+	//	mysql_select_db("totem_workflow");
+
+		// Insert a row of information into the table "example"
+		//mysql_query("INSERT INTO `totem_workflow`.`briefasset` ( `userid`,`briefid`, `assetname`, `assetlocaton`) VALUES ( '$userid','$briefid', '$value->name', '$value->url')"); 
+
+		 //$lastid = mysql_insert_id();
+		
+		//rename('../../../../$value->location', '../../../briefs/$userid/$brefid/');
+
+	}
+	///echo json_encode($info);
+	$infoa = json_encode($info);
+	mail("chris@cjmcsoftware.co.uk","test","dd".$infoa,"From:test@totemworkflow.co.uk");
+
     }
     
     public function delete() {
@@ -292,22 +351,26 @@ class UploadHandler
     }
 }
 
-//echo "ddd".$_SERVER['PHP_SELF']; 
-//exit; 
+    //mail("chris@cjmcsoftware.co.uk","test","ddd","From:test@totemworkflow.co.uk");
+//echo "mail sent";
+//exit;
+
 $upload_handler = new UploadHandler();
 
 header('Pragma: no-cache');
 header('Cache-Control: private, no-cache');
 header('Content-Disposition: inline; filename="files.json"');
-header('X-Content-Type-Options: nosniff');
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'HEAD':
     case 'GET':
+	// mail("chris@cjmcsoftware.co.uk","test","ddd","From:test@totemworkflow.co.uk");
+        
         $upload_handler->get();
         break;
     case 'POST':
-        $upload_handler->post();
+	//insert in dbase
+        $upload_handler->post($_POST['userid'],$_POST['briefid']);
         break;
     case 'DELETE':
         $upload_handler->delete();
@@ -315,6 +378,4 @@ switch ($_SERVER['REQUEST_METHOD']) {
     default:
         header('HTTP/1.0 405 Method Not Allowed');
 }
-
-
 ?>
