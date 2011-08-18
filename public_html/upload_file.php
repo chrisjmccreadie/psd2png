@@ -9,8 +9,8 @@ else
   echo "Type: " . $_FILES["file"]["type"] . "<br />";
   echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
   echo "Stored in: " . $_FILES["file"]["tmp_name"];
-  echo 'ddd:'. $_FILES['uploadedfile']['name'];
-  print_r($_FILES);
+  
+  print_r($_FILES['file']);
      move_uploaded_file($_FILES["file"]["tmp_name"],'/home/psd2png/public_html/output.psd');
    
   
