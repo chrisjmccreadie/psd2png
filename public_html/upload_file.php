@@ -15,7 +15,7 @@ else
   // echo "res:".$res;
   
   
-  $im = new Imagick('/home/psd2png/public_html/output.psd');
+  $im = new Imagick('/home/psd2png/public_html/output2.psd');
 		$im->flattenImages();
 		$im->setImageFormat('png');
         header( 'Content-Type: image/png' );
