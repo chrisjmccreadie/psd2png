@@ -9,7 +9,8 @@ else
   echo "Type: " . $_FILES["file"]["type"] . "<br />";
   echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
   echo "Stored in: " . $_FILES["file"]["tmp_name"];
-  echo 'ddd:'.basename( $_FILES['uploadedfile']['name']); 
+  echo 'ddd:'. $_FILES['uploadedfile']['name']; 
+  
   /*
   $im = new Imagick('$_FILES["file"]["tmp_name"]');
 		$im->flattenImages();
