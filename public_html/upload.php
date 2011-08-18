@@ -226,10 +226,10 @@ class UploadHandler
         echo json_encode($info);
     }
     
-    public function post($userid,$briefid) {
+    public function post() {
 
 
-
+	/*
 	 if (!is_dir("../../../briefs/$userid"))
               mkdir("../../../briefs/$userid", 0777);
 
@@ -239,7 +239,7 @@ class UploadHandler
 	 if (!is_dir("../../../briefs/$userid/$briefid/thumbnails"))
               mkdir("../../../briefs/$userid/$briefid/thumbnails", 0777);
 
-
+	*/
 	   $this->options = array(
             'script_url' => 'http://psd2png.fluxflex.com/',
             'upload_dir' => '/home/psd2png/public_html/files/',
@@ -370,7 +370,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
     case 'POST':
 	//insert in dbase
-        $upload_handler->post($_POST['userid'],$_POST['briefid']);
+        $upload_handler->post();
         break;
     case 'DELETE':
         $upload_handler->delete();
