@@ -241,7 +241,7 @@ class UploadHandler
 
 
 	   $this->options = array(
-            'script_url' => 'http://psd2png.fluxflex.com/';,
+            'script_url' => 'http://psd2png.fluxflex.com/',
             'upload_dir' => '/home/psd2png/public_html/files/',
             'upload_url' => 'http://psd2png.fluxflex.com/files/',
             'param_name' => 'files',
