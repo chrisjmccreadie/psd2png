@@ -42,9 +42,9 @@ class UploadHandler
                 ),
                 */
                 'thumbnail' => array(
-                    'upload_dir' => dirname(__FILE__).'/thumbnails/',
-                    'upload_url' => dirname($_SERVER['PHP_SELF']).'/thumbnails/',
-                    'max_width' => 80,
+                  
+            'upload_dir' => '/home/psd2png/public_html/thumbnails/',
+            'upload_url' => 'http://psd2png.fluxflex.com/thumbnails/','max_width' => 80,
                     'max_height' => 80
                 )
             )
