@@ -15,7 +15,9 @@ else
 		$im->setImageFormat('png');
         header( 'Content-Type: image/png' );
         echo $im;
-  }
+   * 
    */
+  }
+   
    
 ?>
