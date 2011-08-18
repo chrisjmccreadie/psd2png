@@ -1,3 +1,6 @@
+<?php
+//print_r ($_SERVER);
+?>
 <html>
 <body>
 
