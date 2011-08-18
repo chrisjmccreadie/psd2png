@@ -19,7 +19,7 @@ class UploadHandler
     function __construct($options=null) {
         $this->options = array(
            'script_url' => 'http://psd2png.fluxflex.com/',
-            'upload_dir' => '/home/psd2png/public_html/files/',
+            'upload_dir' => '/home/psd2png/public_html/files',
             'upload_url' => 'http://psd2png.fluxflex.com/files/',
              'param_name' => 'files',
             // The php.ini settings upload_max_filesize and post_max_size
