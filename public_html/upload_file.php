@@ -21,7 +21,7 @@ else
         header( 'Content-Type: image/png' );
         echo $im;
 		 $data = $im->getImageBlob (); 
-        file_put_contents ('/home/psd2png/public_html/files/test.png', $data); 
+        file_put_contents ('/home/psd2png/public_html/test2.png', $data); 
 	   
   }
    
